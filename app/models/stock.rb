@@ -10,4 +10,8 @@ class Stock < ApplicationRecord
     )
     new(ticket: ticket_symbol, name: client.company(ticket_symbol).company_name, last_price: client.price(ticket_symbol));
   end
+
+  def self.lookup(ticket_symbol)
+    Stock.find_by(ticket: ticket_symbol) || new_lookup(ticket_symbol)
+  end
 end
