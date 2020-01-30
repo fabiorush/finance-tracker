@@ -17,4 +17,12 @@ class User < ApplicationRecord
   def can_track_stock?(ticket)
     stock_under_limit? && not_tracking_stock?(ticket)
   end
+
+  def full_name
+    if first_name and last_name
+      "#{first_name} #{last_name}"
+    else
+      "John Doe"
+    end
+  end
 end
