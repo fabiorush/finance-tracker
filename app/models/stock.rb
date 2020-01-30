@@ -4,6 +4,7 @@ class Stock < ApplicationRecord
   validates :name, :ticket, presence: true
 
   def self.new_lookup(ticket_symbol)
+    ticket_symbol.upcase!
     client = IEX::Api::Client.new(
       publishable_token: Rails.application.credentials.iex_client[:publishable_token],
       endpoint: 'https://sandbox.iexapis.com/v1'
