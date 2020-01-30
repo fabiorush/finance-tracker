@@ -1,0 +1,9 @@
+<div class="<%= "card card-header " if @stock %>results-block">
+  <% if @stock %>
+    <strong>Symbol: </strong> <%= @stock.ticket %>
+    <strong>Name: </strong> <%= @stock.name %>
+    <strong>Price: </strong> <%= @stock.last_price %>
+  <% else %>
+    <%= render 'layouts/messages' %>
+  <% end %>
+</div>
