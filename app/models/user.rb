@@ -27,4 +27,9 @@ class User < ApplicationRecord
       "John Doe"
     end
   end
+
+  def self.search(name_email)
+    query_name = "%#{name_email.strip}%"
+    where("email LIKE ? OR first_name LIKE ? OR last_name LIKE ?", query_name, query_name, query_name)
+  end
 end

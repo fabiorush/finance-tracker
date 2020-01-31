@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'friendships/search'
   get 'friendships', to: 'friendships#index'
   resources :user_stocks, only: [:create, :destroy]
   get 'stocks/search'
