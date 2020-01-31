@@ -1,4 +1,4 @@
-<% if @stocks.present? %>
+<% if list.present? %>
   <div class="row">
     <div class="col-sm-9">
       <table class="table table-bordered table-hover">
@@ -11,7 +11,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @stocks.each do |stock| %>
+          <% list.each do |stock| %>
             <tr>
               <th scope="row"><%= stock.ticket %></th>
               <td><%= stock.name %></td>
