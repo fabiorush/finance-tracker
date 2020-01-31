@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'friendships/search'
-  get 'friendships', to: 'friendships#index'
+  resources :friendships, only: [:index, :create, :destroy]
   resources :user_stocks, only: [:create, :destroy]
   get 'stocks/search'
   devise_for :users

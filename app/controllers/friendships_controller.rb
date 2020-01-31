@@ -19,4 +19,18 @@ class FriendshipsController < ApplicationController
   def index
     @friends = current_user.friends
   end
+
+  def create
+    friend = User.find(params[:friend_id])
+    current_user.friends << friend
+    flash[:notice] = "You have start following #{friend.full_name}"
+    redirect_to friendships_path
+  end
+
+  def destroy
+    friend = User.find(params[:id])
+    Friendship.destroy_by(user_id: current_user.id, friend_id: params[:id])
+    flash[:notice] = "You have stop following #{friend.full_name}"
+    redirect_to friendships_path
+  end
 end

@@ -8,7 +8,13 @@
           <td><strong>Email: </strong> <%= user.email %></td>
           <td><strong>Actions: </strong>
           <%= link_to "View Profile", "#", method: :post, class: "btn btn-success" %>
-          <%= link_to "Follow friend?", "#", method: :post, class: "btn btn-success" %></td>
+          <% unless current_user.friends.exists?(user.id) %>
+            <%= link_to "Follow friend?", friendships_path(friend_id: user), method: :post, class: "btn btn-success" %></td>
+          <% else %>
+            <span class="badge badge-secundar">
+              You are friends
+            </span>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
