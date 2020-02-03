@@ -1,0 +1,21 @@
+<h2>User detail</h1>
+  <div class="card card-header results-block">
+  <table class="col-md-12">
+    <tbody>
+      <tr>
+        <td><strong>Name: </strong> <%= @user.full_name %></td>
+        <td><strong>Email: </strong> <%= @user.email %></td>
+        <td><strong>Actions: </strong>
+        <% unless current_user.friends.exists?(@user.id) %>
+          <%= link_to "Follow friend?", friendships_path(friend_id: @user), method: :post, class: "btn btn-success" %></td>
+        <% else %>
+          <span class="badge badge-secondary">
+            You are friends
+          </span>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h3>Portifolio</h3>
+<%= render partial: 'stocks/list', locals: { list: @stocks } %>
